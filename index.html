@@ -307,8 +307,72 @@ Array.prototype.reduce
 					</section>
 				</section>
 
+			</section>
 
-				
+			<section>
+				<section data-markdown>
+### ES6
+				</section>
+				<section data-markdown>
+arrow function
+				</section>
+				<section data-markdown>
+class
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim contenteditable>
+'use strict';
+
+function A() {}
+
+class B extends A {}
+
+// console.log(B()); // error
+console.log(B instanceof A); // true
+console.log(B.prototype instanceof A); // true
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim contenteditable>
+'use strict';
+
+function A() {
+  console.log(new.target);
+}
+
+A(); // undefined
+new A(); // A
+					</code></pre>
+				</section>
+				<section>
+					<pre><code class="hljs" data-trim contenteditable>
+'use strict';
+
+function A() {}
+function B() {
+	if (typeof new.target === 'undefined') {
+		throw "cannot call without new"
+	}
+	A.apply(this, arguments);
+}
+B.prototype = Object.create(A.prototype, {
+  constructor: {
+    value: B,
+    enumerable: true,
+    writable: true,
+    configurable: true
+  }
+});
+					</code></pre>
+				</section>
+				<section data-markdown>
+
+				</section>
+				<section data-markdown>
+Array.prototype.reduce
+				</section>
+			</section>
+
 
 			</div>
 
